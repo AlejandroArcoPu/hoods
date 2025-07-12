@@ -1,0 +1,135 @@
+@use "../../styles/variables.module.scss";
+
+.header {
+  color: variables.$secondary-bg;
+  display: flex;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  font-family: "Manufacturing Consent", system-ui;
+  padding: 8px 0px;
+  justify-content: center;
+  background-color: variables.$primary-color;
+}
+
+.title {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.title:hover {
+  transform: rotate(3deg) scale(1.1);
+}
+
+.titleText {
+  text-shadow: 1px 1px 2px black;
+}
+
+// .imgContainer {
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+// }
+
+.img {
+  object-fit: cover;
+  aspect-ratio: 2/1;
+}
+
+.content {
+  min-height: 100vh;
+  color: variables.$primary-color;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  color: variables.$primary-bg;
+}
+
+.logo {
+  height: 35px;
+  width: 35px;
+}
+
+.carousel {
+  border: 2px solid white;
+  background-color: variables.$secondary-bg;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: variables.$primary-color;
+}
+
+.item {
+  position: absolute;
+  width: 300px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  left: calc(300px * 6);
+  animation: scrollLeft 20s linear infinite;
+}
+
+.mySwiper {
+  position: relative;
+  width: 100%;
+}
+
+.mySliders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+.item1 {
+  @extend .item;
+  animation-delay: calc(20s / 6 * (6 - 1) * -1);
+}
+
+.item2 {
+  @extend .item;
+  animation-delay: calc(20s / 6 * (6 - 2) * -1);
+}
+
+.item3 {
+  @extend .item;
+  animation-delay: calc(20s / 6 * (6 - 3) * -1);
+}
+
+.item4 {
+  @extend .item;
+  animation-delay: calc(20s / 6 * (6 - 4) * -1);
+}
+
+.item5 {
+  @extend .item;
+  animation-delay: calc(20s / 6 * (6 - 5) * -1);
+}
+
+.item6 {
+  @extend .item;
+  animation-delay: calc(20s / 6 * (6 - 6) * -1);
+}
+
+@keyframes scrollLeft {
+  100% {
+    left: -300px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carousel {
+    height: 50px;
+  }
+
+  .img {
+    aspect-ratio: 2/3;
+  }
+
+  .item {
+    font-size: 1.3rem;
+  }
+}
