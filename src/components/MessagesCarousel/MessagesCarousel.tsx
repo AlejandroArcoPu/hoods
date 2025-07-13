@@ -1,5 +1,8 @@
-import { useState, useEffect } from "react";
 import styles from "./MessagesCarousel.module.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselItems = [
   "WORLDWIDE SHIPPING 🌍",
@@ -8,18 +11,41 @@ const carouselItems = [
 ];
 
 export default function MessagesCarousel() {
-  const [item, setItem] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setItem((prev) => (prev + 1) % carouselItems.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
+  const prev = useRef(null);
+  const next = useRef(null);
   return (
-    <div className={styles.carousel}>
-      <p className={styles.item}>{carouselItems[item]}</p>
-    </div>
+    <Swiper
+      centeredSlides={true}
+      loop={true}
+      speed={1200}
+      navigation={{
+        prevEl: prev.current,
+        nextEl: next.current,
+      }}
+      autoplay={{
+        delay: 3500,
+        disableOnInteraction: false,
+      }}
+      modules={[Autoplay, Navigation]}
+      className={styles.carousel}
+    >
+      {carouselItems.map((item) => (
+        <SwiperSlide className={styles.item}>
+          <p>{item}</p>
+        </SwiperSlide>
+      ))}
+      <div className={styles.prev} ref={prev}>
+        <ChevronLeft strokeWidth={1} />
+      </div>
+      <div className={styles.next} ref={next}>
+        <ChevronRight strokeWidth={1} />
+      </div>
+    </Swiper>
+
+    // <div className={styles.carousel}>
+    //   {carouselItems.map((item) => (
+    //     <p className={styles.item}>{item}</p>
+    //   ))}
+    // </div>
   );
 }

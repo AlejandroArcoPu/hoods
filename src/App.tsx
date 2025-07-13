@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import styles from "./App.module.scss";
-import logo from "./assets/logo.png";
+import logo from "./assets/logo.avif";
 import MessagesCarousel from "./components/MessagesCarousel/MessagesCarousel";
 
 function App() {
