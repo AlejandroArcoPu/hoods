@@ -18,50 +18,28 @@ export default function Payments({ size }: Props) {
   return (
     <ul className={styles.list}>
       <li className={styles.item}>
-        <a href="#">
-          <SiMastercard color="red" size={size} />
-        </a>
+        <SiMastercard color="red" size={size} />
       </li>
       <li className={styles.item}>
-        <a href="#">
-          <SiVisa color="red" size={size} />
-        </a>
+        <SiVisa color="red" size={size} />
       </li>
       <li className={styles.item}>
-        {" "}
-        <a href="#">
-          <SiPaypal color="red" size={size} />
-        </a>
+        <SiPaypal color="red" size={size} />
       </li>
       <li className={styles.item}>
-        {" "}
-        <a href="#">
-          <SiGooglepay color="red" size={size} />
-        </a>{" "}
+        <SiGooglepay color="red" size={size} />
       </li>
       <li className={styles.item}>
-        {" "}
-        <a href="#">
-          <SiSamsungpay color="red" size={size} />
-        </a>{" "}
+        <SiSamsungpay color="red" size={size} />
       </li>
       <li className={styles.item}>
-        {" "}
-        <a href="#">
-          <SiMercadopago color="red" size={size} />
-        </a>{" "}
+        <SiMercadopago color="red" size={size} />
       </li>
       <li className={styles.item}>
-        {" "}
-        <a href="#">
-          <SiApplepay color="red" size={size} />
-        </a>{" "}
+        <SiApplepay color="red" size={size} />
       </li>
       <li className={styles.item}>
-        {" "}
-        <a href="#">
-          <SiAmericanexpress color="red" size={size} />
-        </a>{" "}
+        <SiAmericanexpress color="red" size={size} />
       </li>
     </ul>
   );

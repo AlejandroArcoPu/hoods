@@ -7,8 +7,6 @@ import carousel3 from "../../assets/carousel3.jpg";
 import carousel4 from "../../assets/carousel4.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
 import { Autoplay, Pagination, Parallax } from "swiper/modules";
 import { useRef } from "react";
 import SocialMedia from "../../components/SocialMedia/SocialMedia.js";
@@ -18,8 +16,8 @@ import Payments from "../../components/Payments/Payments.js";
 export default function Home() {
   const progressCircle = useRef<SVGSVGElement | null>(null);
   const onAutoplayTimeLeft = (
-    s: SwiperType,
-    time: number,
+    _s: SwiperType,
+    _time: number,
     progress: number
   ) => {
     if (progressCircle.current) {
