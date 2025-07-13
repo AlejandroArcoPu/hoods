@@ -5,3 +5,8 @@
   padding: 0px;
   list-style-type: none;
 }
+@media only screen and (max-width: 768px) {
+  .list {
+    justify-content: center;
+  }
+}
