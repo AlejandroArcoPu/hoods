@@ -1,75 +1,16 @@
 @use "../../styles/variables.module.scss";
 
-.header {
-  color: variables.$secondary-bg;
-  display: flex;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  font-family: "Manufacturing Consent", system-ui;
-  padding: 8px 0px;
-  justify-content: center;
-  background-color: variables.$primary-color;
-}
-
-.title {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  transition: transform 0.2s;
-}
-
-.title:hover {
-  transform: rotate(3deg) scale(1.1);
-}
-
-.titleText {
-  text-shadow: 1px 1px 2px black;
-}
-
-// .imgContainer {
-//   position: relative;
-//   width: 100%;
-//   height: 100%;
-// }
-
 .img {
   object-fit: cover;
   aspect-ratio: 2/1;
 }
 
 .content {
-  min-height: 100vh;
-  color: variables.$primary-color;
   display: flex;
   align-items: center;
   flex-direction: column;
   position: relative;
   color: variables.$primary-bg;
-}
-
-.logo {
-  height: 35px;
-  width: 35px;
-}
-
-.carousel {
-  border: 2px solid white;
-  background-color: variables.$secondary-bg;
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  color: variables.$primary-color;
-}
-
-.item {
-  position: absolute;
-  width: 300px;
-  font-weight: 800;
-  font-size: 1.5rem;
-  left: calc(300px * 6);
-  animation: scrollLeft 20s linear infinite;
 }
 
 .mySwiper {
@@ -82,54 +23,157 @@
   justify-content: center;
   align-items: center;
   background: white;
-}
+  position: relative;
+  max-height: 850px !important;
 
-.item1 {
-  @extend .item;
-  animation-delay: calc(20s / 6 * (6 - 1) * -1);
-}
+  .textSlider {
+    position: absolute;
+    z-index: 40;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 1px 1px 2px black;
 
-.item2 {
-  @extend .item;
-  animation-delay: calc(20s / 6 * (6 - 2) * -1);
-}
+    .textTitle {
+      font-weight: 900;
+    }
 
-.item3 {
-  @extend .item;
-  animation-delay: calc(20s / 6 * (6 - 3) * -1);
-}
+    .textPara {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  }
 
-.item4 {
-  @extend .item;
-  animation-delay: calc(20s / 6 * (6 - 4) * -1);
-}
+  .textSlider1,
+  .textSlider2 {
+    left: 0;
+    right: 0;
+    bottom: 60px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+  }
 
-.item5 {
-  @extend .item;
-  animation-delay: calc(20s / 6 * (6 - 5) * -1);
-}
-
-.item6 {
-  @extend .item;
-  animation-delay: calc(20s / 6 * (6 - 6) * -1);
-}
-
-@keyframes scrollLeft {
-  100% {
-    left: -300px;
+  .textSlider3 {
+    left: 60px;
+    bottom: 60px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
   }
 }
 
-@media screen and (max-width: 700px) {
-  .carousel {
-    height: 50px;
-  }
+.button {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border: none;
+  color: variables.$primary-color;
+  padding: 5px 40px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  background-color: variables.$secondary-bg;
+  margin-bottom: 20px;
+}
 
+.button:hover {
+  transform: scale(1.1);
+}
+
+.input {
+  padding: 10px;
+  padding-left: 20px;
+  border-radius: 20px;
+}
+
+.input:focus {
+  border: 3px solid variables.$secondary-bg;
+  outline: none;
+}
+
+.end {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 650px));
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.endInfoContainer,
+.endInfoContainer2 {
+  font-size: 1.3rem;
+}
+
+.endInfoContainer2 {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.emailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.endInfo {
+  margin-bottom: 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1560px) {
+  .end {
+    gap: 80px;
+    padding: 40px;
+  }
+}
+@media only screen and (max-width: 768px) {
   .img {
     aspect-ratio: 2/3;
   }
+  .mySliders {
+    .textSlider {
+      font-size: 1.2rem;
+    }
+  }
+  .button {
+    font-size: 1.2rem;
+  }
 
-  .item {
-    font-size: 1.3rem;
+  .input {
+    padding: 8px;
+    padding-left: 20px;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .mySliders {
+    .textSlider {
+      font-size: 1.5rem;
+    }
+    .textSlider1,
+    .textSlider2 {
+      bottom: 50px;
+    }
+
+    .textSlider3 {
+      left: 50px;
+      bottom: 50px;
+    }
+  }
+
+  .end {
+    justify-content: center;
+    gap: 40px;
   }
 }

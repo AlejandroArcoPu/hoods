@@ -1,0 +1,72 @@
+@use "../../styles/variables.module.scss";
+
+.carousel {
+  background-color: variables.$secondary-bg;
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: variables.$primary-color;
+  margin-bottom: 40px;
+}
+
+.item {
+  position: absolute;
+  width: 300px;
+  font-weight: 800;
+  font-size: 1.5rem;
+  left: calc(400px * 7);
+  animation: scrollLeft 30s linear infinite;
+}
+
+.item1 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 1) * -1);
+}
+
+.item2 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 2) * -1);
+}
+
+.item3 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 3) * -1);
+}
+
+.item4 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 4) * -1);
+}
+
+.item5 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 5) * -1);
+}
+
+.item6 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 6) * -1);
+}
+
+.item7 {
+  @extend .item;
+  animation-delay: calc(30s / 7 * (7 - 7) * -1);
+}
+
+@keyframes scrollLeft {
+  100% {
+    left: -300px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carousel {
+    height: 50px;
+  }
+
+  .item {
+    font-size: 1.3rem;
+  }
+}

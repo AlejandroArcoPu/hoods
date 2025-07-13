@@ -1,28 +1,23 @@
 import { Outlet } from "react-router";
 import styles from "./App.module.scss";
-import { useState, useEffect } from "react";
-
-const carouselItems = [
-  "WORLDWIDE SHIPPING 🌍",
-  "15 DAYS RETURNS & EXCHANGES ⚡",
-  "FREE SHIPPING: OVER 80€ 😎",
-];
+import logo from "./assets/logo.png";
+import MessagesCarousel from "./components/MessagesCarousel/MessagesCarousel";
 
 function App() {
-  const [item, setItem] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setItem((prev) => (prev + 1) % carouselItems.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <>
-      <div className={styles.carousel}>
-        <p className={styles.item}>{carouselItems[item]}</p>
-      </div>
+      <MessagesCarousel />
+      <header className={styles.header}>
+        <div className={styles.title}>
+          <img
+            src={logo}
+            alt="Logo Hoods, white fire and a background red"
+            className={styles.logo}
+          />
+          <h1 className={styles.titleText}>Hoods</h1>
+        </div>
+      </header>
+
       <Outlet />
       <footer>© Hoods</footer>
     </>

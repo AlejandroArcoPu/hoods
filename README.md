@@ -1,3 +1,3 @@
 # hoods
 
-E-commerce webpage called hoods.Part of Odin Project.
+E-commerce webpage called hoods. Part of Odin Project.
