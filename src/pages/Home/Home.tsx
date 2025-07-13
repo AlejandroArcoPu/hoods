@@ -1,10 +1,10 @@
 import styles from "./Home.module.scss";
-import carousel1 from "../../assets/carousel1.jpg";
-import carousel2 from "../../assets/carousel2.jpg";
-import carousel2_600 from "../../assets/carousel2_600.jpg";
-import carousel1_600 from "../../assets/carousel1_600.jpg";
-import carousel3 from "../../assets/carousel3.jpg";
-import carousel4 from "../../assets/carousel4.jpg";
+import carousel1 from "../../assets/carousel1.avif";
+import carousel2 from "../../assets/carousel2.avif";
+import carousel2_600 from "../../assets/carousel2_600.avif";
+import carousel1_600 from "../../assets/carousel1_600.avif";
+import carousel3 from "../../assets/carousel3.avif";
+import carousel4 from "../../assets/carousel4.avif";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination, Parallax } from "swiper/modules";
@@ -27,6 +27,7 @@ export default function Home() {
       );
     }
   };
+
   return (
     <>
       <main className={styles.content}>
@@ -43,7 +44,6 @@ export default function Home() {
           pagination={{
             clickable: true,
           }}
-          navigation={true}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           modules={[Autoplay, Pagination, Parallax]}
         >
@@ -81,6 +81,7 @@ export default function Home() {
                 className={styles.img}
                 src={carousel2}
                 alt="Skate carousel elements"
+                loading="lazy"
               />
             </picture>
             <div className={`${styles.textSlider} ${styles.textSlider3}`}>
@@ -106,6 +107,7 @@ export default function Home() {
                 className={styles.img}
                 src={carousel3}
                 alt="Skate carousel elements"
+                loading="lazy"
               />
             </picture>
             <div className={`${styles.textSlider} ${styles.textSlider2}`}>
@@ -131,6 +133,7 @@ export default function Home() {
                 className={styles.img}
                 src={carousel4}
                 alt="Skate carousel elements"
+                loading="lazy"
               />
             </picture>
             <div className={`${styles.textSlider} ${styles.textSlider3}`}>

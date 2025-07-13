@@ -39,3 +39,10 @@ footer {
   justify-content: center;
   color: variables.$primary-bg;
 }
+
+@media only screen and (max-width: 768px) {
+  .logo {
+    height: 35px;
+    width: 35px;
+  }
+}

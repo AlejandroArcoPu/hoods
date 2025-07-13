@@ -103,6 +103,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 650px));
   justify-content: space-between;
   padding: 50px;
+  margin-bottom: 20px;
 }
 
 .endInfoContainer,
@@ -134,16 +135,13 @@
   .end {
     gap: 80px;
     padding: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 550px));
+    justify-content: center;
   }
 }
 @media only screen and (max-width: 768px) {
   .img {
     aspect-ratio: 2/3;
-  }
-  .mySliders {
-    .textSlider {
-      font-size: 1.2rem;
-    }
   }
   .button {
     font-size: 1.2rem;
@@ -160,20 +158,25 @@
   .mySliders {
     .textSlider {
       font-size: 1.5rem;
+      .textPara {
+        font-size: 1.1rem;
+      }
     }
     .textSlider1,
     .textSlider2 {
-      bottom: 50px;
+      bottom: 30px;
     }
 
     .textSlider3 {
-      left: 50px;
-      bottom: 50px;
+      left: 25px;
+      bottom: 30px;
     }
   }
-
   .end {
     justify-content: center;
     gap: 40px;
+    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 550px));
+    padding: 20px;
   }
 }
