@@ -1,34 +1,43 @@
 @use "../../styles/variables.module.scss";
 
 .carousel {
-  background-color: variables.$secondary-bg;
+  background-color: variables.$secondary-bg !important;
   font-weight: 600;
-  font-size: 0.9rem;
   padding: 5px 0px;
   display: flex;
   justify-content: center;
   color: variables.$primary-color;
+  align-items: center;
 }
 
 .item {
-  animation: carousel 5s infinite;
+  text-shadow: 1px 1px 2px black;
+  background-color: variables.$secondary-bg !important;
+  font-size: 0.8rem !important;
 }
 
-@keyframes carousel {
-  0% {
-    opacity: 0;
-    transform: translateY(0px);
+.next,
+.prev {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.prev {
+  left: 150px;
+}
+
+.next {
+  right: 150px;
+}
+
+@media only screen and (max-width: 768px) {
+  .prev {
+    left: 30px;
   }
-  10% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  90% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-10px);
+  .next {
+    right: 30px;
   }
 }
