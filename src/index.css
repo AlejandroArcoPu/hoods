@@ -1,6 +1,6 @@
 @import "swiper/css";
 @import "swiper/css/pagination";
-
+@import "swiper/css/navigation";
 body {
   margin: 0 auto;
   max-width: 2400px;
@@ -113,4 +113,14 @@ h6 {
   stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 15px;
 }
