@@ -1,10 +1,8 @@
 import styles from "./Home.module.scss";
-import carousel1 from "../../assets/carousel1.avif";
-import carousel2 from "../../assets/carousel2.avif";
-import carousel2_600 from "../../assets/carousel2_600.avif";
-import carousel1_600 from "../../assets/carousel1_600.avif";
-import carousel3 from "../../assets/carousel3.avif";
-import carousel4 from "../../assets/carousel4.avif";
+import carousel5 from "../../assets/carousel5.jpg";
+import carousel2 from "../../assets/carousel2.jpg";
+import carousel3 from "../../assets/carousel3.jpg";
+import carousel4 from "../../assets/carousel4.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Autoplay, Pagination, Parallax } from "swiper/modules";
@@ -32,122 +30,87 @@ export default function Home() {
     <>
       <main className={styles.content}>
         <Swiper
-          className={styles.mySwiper}
-          centeredSlides={true}
-          parallax={true}
-          speed={1200}
+          onAutoplayTimeLeft={onAutoplayTimeLeft}
+          className={styles.swiper}
           autoplay={{
-            delay: 5500,
+            delay: 5000,
             disableOnInteraction: false,
           }}
+          speed={1000}
+          parallax={true}
           loop={true}
           pagination={{
             clickable: true,
+            dynamicBullets: true,
           }}
-          onAutoplayTimeLeft={onAutoplayTimeLeft}
-          modules={[Autoplay, Pagination, Parallax]}
+          modules={[Pagination, Autoplay, Parallax]}
         >
-          <SwiperSlide className={styles.mySliders}>
-            <picture className={styles.img}>
-              <source media="(width < 768px)" srcSet={carousel1_600} />
-
-              <source media="(width >= 768px)" srcSet={carousel1} />
-              <img
-                className={styles.img}
-                src={carousel1}
-                alt="Skate carousel elements"
-              />
-            </picture>
-            <div className={`${styles.textSlider} ${styles.textSlider1}`}>
-              <h1
-                data-swiper-parallax="-100%"
-                className={styles.textTitle}
-                data-swiper-parallax-duration="700"
-              >
+          <SwiperSlide className={styles.slider}>
+            <img
+              className={styles.img}
+              loading="lazy"
+              src={carousel2}
+              alt="Guy with a hood and a skate jumping a wall"
+            />
+            <div className={`${styles.textSlider}`}>
+              <h1 data-swiper-parallax="-500" className={styles.title}>
                 NO RULES
               </h1>
-              <p data-swiper-parallax="-600" className={styles.textPara}>
+              <p className={styles.paragraph} data-swiper-parallax="-200">
                 For the ones who ride with attitude.
               </p>
-              <button className={styles.button}>Buy</button>
+              <button className={styles.button}>Shop</button>
             </div>
           </SwiperSlide>
-          <SwiperSlide className={styles.mySliders}>
-            <picture className={styles.img}>
-              <source media="(width < 768px)" srcSet={carousel2_600} />
-
-              <source media="(width >= 768px)" srcSet={carousel2} />
-              <img
-                className={styles.img}
-                src={carousel2}
-                alt="Skate carousel elements"
-                loading="lazy"
-              />
-            </picture>
-            <div className={`${styles.textSlider} ${styles.textSlider3}`}>
-              <h1
-                data-swiper-parallax="-100%"
-                className={styles.textTitle}
-                data-swiper-parallax-duration="700"
-              >
+          <SwiperSlide className={styles.slider}>
+            <img
+              className={styles.img}
+              loading="lazy"
+              src={carousel5}
+              alt="Guy without shirt in a skate jumping"
+            />
+            <div className={styles.textSlider}>
+              <h1 data-swiper-parallax="-500" className={styles.title}>
                 BORN TO BREAK
               </h1>
-              <p data-swiper-parallax="-600" className={styles.textPara}>
-                Skate. Shred. Repeat.
+              <p className={styles.paragraph} data-swiper-parallax="-200">
+                Skate. Shred. Repeat
               </p>
-              <button className={styles.button}>Buy</button>
+              <button className={styles.button}>Shop</button>
             </div>
           </SwiperSlide>
-          <SwiperSlide className={styles.mySliders}>
-            <picture>
-              <source media="(width < 768px)" srcSet={carousel3} />
-
-              <source media="(width >= 768px)" srcSet={carousel3} />
-              <img
-                className={styles.img}
-                src={carousel3}
-                alt="Skate carousel elements"
-                loading="lazy"
-              />
-            </picture>
-            <div className={`${styles.textSlider} ${styles.textSlider2}`}>
-              <h1
-                data-swiper-parallax="-100%"
-                data-swiper-parallax-duration="700"
-                className={styles.textTitle}
-              >
+          <SwiperSlide className={styles.slider}>
+            <img
+              className={styles.img}
+              loading="lazy"
+              src={carousel3}
+              alt="Guy with black shirt in a skate riding in the road"
+            />
+            <div className={`${styles.textSlider} ${styles.positionCenter}`}>
+              <h1 data-swiper-parallax="-500" className={styles.title}>
                 ROLL FREE
               </h1>
-              <p className={styles.textPara} data-swiper-parallax="-600">
-                No limits. No leaders. Just motion.
+              <p className={styles.paragraph} data-swiper-parallax="-200">
+                No limits. Just motion.
               </p>
-              <button className={styles.button}>Buy</button>
+              <button className={styles.button}>Shop</button>
             </div>
           </SwiperSlide>
-          <SwiperSlide className={styles.mySliders}>
-            <picture className={styles.img}>
-              <source media="(width < 768px)" srcSet={carousel4} />
-
-              <source media="(width >= 768px)" srcSet={carousel4} />
-              <img
-                className={styles.img}
-                src={carousel4}
-                alt="Skate carousel elements"
-                loading="lazy"
-              />
-            </picture>
-            <div className={`${styles.textSlider} ${styles.textSlider3}`}>
-              <h1
-                data-swiper-parallax="-100%"
-                data-swiper-parallax-duration="700"
-                className={styles.textTitle}
-              >
-                FALL. GET UP. REPEAT.
+          <SwiperSlide className={styles.slider}>
+            <img
+              className={styles.img}
+              loading="lazy"
+              src={carousel4}
+              alt="Guy with a skate jumping with his hand in the skate"
+            />
+            <div className={`${styles.textSlider} ${styles.positionCenter}`}>
+              <h1 data-swiper-parallax="-500" className={styles.title}>
+                FALL & GET UP
               </h1>
-              <p className={styles.textPara} data-swiper-parallax="-600">
-                We don’t dress safe. We dress real.
+              <p className={styles.paragraph} data-swiper-parallax="-200">
+                We don't dress safe. We dress real.
               </p>
-              <button className={styles.button}>Buy</button>
+              <button className={styles.button}>Shop</button>
             </div>
           </SwiperSlide>
           <div className="autoplay-progress" slot="container-end">
