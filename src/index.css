@@ -1,6 +1,7 @@
 @import "swiper/css";
 @import "swiper/css/pagination";
 @import "swiper/css/navigation";
+
 body {
   margin: 0 auto;
   max-width: 2400px;
@@ -66,7 +67,7 @@ h6 {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #444;
+  background: white;
 
   /* Center slide text vertically */
   display: flex;
@@ -74,15 +75,13 @@ h6 {
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .swiper-pagination-bullet-active {
   background: #ff0000 !important;
+}
+
+.swiper-pagination-bullet {
+  opacity: 0.7;
+  background: black;
 }
 
 .autoplay-progress {
