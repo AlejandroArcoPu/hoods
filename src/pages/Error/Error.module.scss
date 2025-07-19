@@ -1,0 +1,21 @@
+@use "../../styles/variables.module.scss";
+
+.main {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 80vh;
+}
+
+.products {
+  background-color: variables.$secondary-bg;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.emoji {
+  width: 90px;
+}

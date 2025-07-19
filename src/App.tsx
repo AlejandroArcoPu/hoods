@@ -1,27 +1,11 @@
-import { Outlet } from "react-router";
-import styles from "./App.module.scss";
-import logo from "./assets/logo.avif";
-import MessagesCarousel from "./components/MessagesCarousel/MessagesCarousel";
+import AppLayout from "./pages/AppLayout/AppLayout.tsx";
+import MessagesCarousel from "./components/MessagesCarousel/MessagesCarousel.tsx";
 
-function App() {
+export default function App() {
   return (
     <>
       <MessagesCarousel />
-      <header className={styles.header}>
-        <div className={styles.title}>
-          <img
-            src={logo}
-            alt="Logo Hoods, white fire and a background red"
-            className={styles.logo}
-          />
-          <h1 className={styles.titleText}>Hoods</h1>
-        </div>
-      </header>
-
-      <Outlet />
-      <footer>© Hoods</footer>
+      <AppLayout />
     </>
   );
 }
-
-export default App;
