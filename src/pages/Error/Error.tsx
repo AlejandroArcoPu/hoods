@@ -1,4 +1,4 @@
-import no_entry from "../../assets/no_entry.avif";
+import no_entry from "../../assets/emojis/no_entry.avif";
 import styles from "./Error.module.scss";
 
 export default function Error() {

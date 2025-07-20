@@ -5,6 +5,12 @@ import App from "./App.tsx";
 import Error from "./pages/Error/Error.tsx";
 import AppLayout from "./pages/AppLayout/AppLayout.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
+import { getHome } from "./apis.ts";
+
+export async function homeLoader() {
+  const home = await getHome();
+  return { home };
+}
 
 // export const router = createBrowserRouter([
 //   {
@@ -26,7 +32,7 @@ export const router = createBrowserRouter([
       </AppLayout>
     ),
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <Home />, loader: homeLoader },
       {
         path: "store",
         element: <Store />,

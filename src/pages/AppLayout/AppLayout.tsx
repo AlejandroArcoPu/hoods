@@ -2,7 +2,7 @@ import type React from "react";
 import { Link, Outlet } from "react-router";
 import styles from "./AppLayout.module.scss";
 import logo from "../../assets/logo.avif";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 
 type AppLayout = {
   children?: React.JSX.Element;
@@ -21,7 +21,7 @@ export default function AppLayout({ children }: AppLayout) {
           Hoods
         </Link>
         <Link className={styles.cart} to="/cart">
-          <ShoppingBag className={styles.cartIcon} />
+          <ShoppingCart className={styles.cartIcon} />
         </Link>
       </header>
       {children ?? <Outlet />}

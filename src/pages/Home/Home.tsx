@@ -1,16 +1,15 @@
 import styles from "./Home.module.scss";
-import carousel5 from "../../assets/carousel5.jpg";
-import carousel2 from "../../assets/carousel2.jpg";
-import carousel3 from "../../assets/carousel3.jpg";
-import carousel4 from "../../assets/carousel4.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Parallax } from "swiper/modules";
 import SocialMedia from "../../components/SocialMedia/SocialMedia.js";
 import PrimaryCarousel from "../../components/PrimaryCarousel/PrimaryCarousel.js";
 import Payments from "../../components/Payments/Payments.js";
 import Button from "../../components/Button/Button.tsx";
+import { type Home } from "../../apis.ts";
+import { useLoaderData } from "react-router";
 
 export default function Home() {
+  const { home } = useLoaderData();
   return (
     <>
       <main className={styles.content}>
@@ -29,74 +28,28 @@ export default function Home() {
           }}
           modules={[Pagination, Autoplay, Parallax]}
         >
-          <SwiperSlide className={styles.slider}>
-            <img
-              className={styles.img}
-              loading="lazy"
-              src={carousel2}
-              alt="Guy with a hood and a skate jumping a wall"
-            />
-            <div className={`${styles.textSlider} ${styles.positionCenter}`}>
-              <h1 data-swiper-parallax="-500" className={styles.title}>
-                NO RULES
-              </h1>
-              <p className={styles.paragraph} data-swiper-parallax="-200">
-                For the ones who ride with attitude.
-              </p>
-              <Button text={"Shop"} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className={styles.slider}>
-            <img
-              className={styles.img}
-              loading="lazy"
-              src={carousel5}
-              alt="Guy without shirt in a skate jumping"
-            />
-            <div className={`${styles.textSlider} ${styles.positionCenter}`}>
-              <h1 data-swiper-parallax="-500" className={styles.title}>
-                BORN TO BREAK
-              </h1>
-              <p className={styles.paragraph} data-swiper-parallax="-200">
-                Skate. Shred. Repeat
-              </p>
-              <Button text={"Shop"} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className={styles.slider}>
-            <img
-              className={styles.img}
-              loading="lazy"
-              src={carousel3}
-              alt="Guy with black shirt in a skate riding in the road"
-            />
-            <div className={`${styles.textSlider} ${styles.positionCenter}`}>
-              <h1 data-swiper-parallax="-500" className={styles.title}>
-                ROLL FREE
-              </h1>
-              <p className={styles.paragraph} data-swiper-parallax="-200">
-                No limits. Just motion.
-              </p>
-              <Button text={"Shop"} />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className={styles.slider}>
-            <img
-              className={styles.img}
-              loading="lazy"
-              src={carousel4}
-              alt="Guy with a skate jumping with his hand in the skate"
-            />
-            <div className={`${styles.textSlider} ${styles.positionCenter}`}>
-              <h1 data-swiper-parallax="-500" className={styles.title}>
-                FALL & GET UP
-              </h1>
-              <p className={styles.paragraph} data-swiper-parallax="-200">
-                We don't dress safe. We dress real.
-              </p>
-              <Button text={"Shop"} />
-            </div>
-          </SwiperSlide>
+          {home.length &&
+            home.map((carousel: Home, index: number) => (
+              <SwiperSlide className={styles.slider}>
+                <img
+                  className={styles.img}
+                  loading={index > 0 ? "lazy" : "eager"}
+                  src={carousel.Image}
+                  alt="Guy with a skate jumping"
+                />
+                <div
+                  className={`${styles.textSlider} ${styles.positionCenter}`}
+                >
+                  <h1 data-swiper-parallax="-500" className={styles.title}>
+                    {carousel.Title}
+                  </h1>
+                  <p className={styles.paragraph} data-swiper-parallax="-200">
+                    {carousel.Subtitle}
+                  </p>
+                  <Button text={"Shop"} />
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
         <PrimaryCarousel />
         <div className={styles.end}>

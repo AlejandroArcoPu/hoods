@@ -46,14 +46,14 @@
   border-radius: 10px;
   padding: 0px;
   justify-self: end;
-  margin-right: 20px;
+  margin-right: 25px;
   display: flex;
   align-items: center;
   transition: 0.2s transform;
 }
 
 .cart:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .cartIcon {
@@ -73,5 +73,8 @@ footer {
   .logo {
     height: 35px;
     width: 35px;
+  }
+  .cart {
+    margin-right: 15px;
   }
 }
