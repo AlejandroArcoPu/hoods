@@ -1,3 +1,47 @@
-.title {
-  margin: 0px;
+.main {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  min-height: 100vh;
+}
+
+.left,
+.right {
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+.left {
+  background-color: rgba(0, 0, 0, 0.269);
+}
+
+.right {
+  background-color: rgba(0, 0, 255, 0.511);
+}
+
+.products {
+  background-color: rgba(255, 0, 0, 0.453);
+}
+
+.list {
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.listTitle {
+  color: #3333338a;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }

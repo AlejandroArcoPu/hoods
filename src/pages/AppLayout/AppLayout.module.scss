@@ -1,0 +1,80 @@
+@use "../../styles/variables.module.scss";
+
+.header {
+  color: variables.$secondary-bg;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  font-family: "Manufacturing Consent", system-ui;
+  padding: 8px 0px;
+  justify-content: center;
+  background-color: variables.$primary-color;
+  box-shadow: 1px 1px 2px #ccc;
+}
+
+.title {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  transition: transform 0.2s;
+  text-shadow: 1px 1px 2px black;
+  font-size: 2rem;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  color: variables.$secondary-bg;
+  font-size: 1.7rem;
+  font-weight: 800;
+  text-decoration: none;
+  grid-column: 2;
+}
+
+.title:hover {
+  transform: rotate(3deg) scale(1.1);
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+}
+
+.cart {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0px;
+  justify-self: end;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+  transition: 0.2s transform;
+}
+
+.cart:hover {
+  transform: scale(1.2);
+}
+
+.cartIcon {
+  color: variables.$secondary-bg;
+}
+
+footer {
+  padding: 15px 0px;
+  border-top: 1px solid variables.$primary-bg;
+  display: flex;
+  justify-content: center;
+  color: variables.$primary-bg;
+  font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .logo {
+    height: 35px;
+    width: 35px;
+  }
+  .cart {
+    margin-right: 15px;
+  }
+}
