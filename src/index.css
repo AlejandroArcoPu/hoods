@@ -4,7 +4,6 @@
 
 body {
   margin: 0 auto;
-  max-width: 1800px;
   min-height: 100vh;
   line-height: 1.5;
   font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,7 +13,13 @@ body {
 
 #root {
   min-height: 100vh;
-  overflow-x: hidden;
+  transition: all 0.3s;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 1800px;
+  overflow: hidden;
 }
 
 *,

@@ -1,0 +1,301 @@
+@use "../../styles/variables.module.scss";
+
+.main {
+  min-height: 100vh;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  padding-top: 20px;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 30px;
+  gap: 40px;
+  border-radius: 10px;
+  border: 1px solid variables.$primary-border;
+  box-shadow: 1px 1px 1px variables.$primary-border;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 100%;
+  height: 100%;
+  justify-self: center;
+  border-radius: 10px;
+  border: 1px solid variables.$primary-border;
+  overflow: hidden;
+  max-height: 650px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: variables.$primary-subtitle;
+  text-decoration: underline;
+}
+
+.price {
+  background-color: variables.$secondary-bg;
+  color: variables.$primary-color;
+  padding: 6px 12px;
+  border-radius: 99px;
+  width: fit-content;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.productText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.char {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.color {
+  display: flex;
+  gap: 10px;
+}
+
+.charTitle {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.radioboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 5px;
+}
+
+.radiobox {
+  position: relative;
+  width: 50px;
+  height: 30px;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  color: variables.$primary-bg;
+  font-weight: 500;
+  transition: 0.2s all;
+  border: 1px solid variables.$primary-border;
+}
+
+.radiobox:hover {
+  border: 2px solid variables.$secondary-bg;
+  transform: rotate(-8deg);
+}
+
+.input[type="radio"] {
+  appearance: none;
+}
+
+.input[type="radio"] + .label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.input[type="radio"]:disabled + .label {
+  color: variables.$primary-border;
+  cursor: not-allowed;
+}
+
+.input[type="radio"]:checked + .label {
+  background: variables.$secondary-bg;
+  color: variables.$primary-color;
+}
+
+.clarification {
+  font-size: 0.8rem;
+  font-weight: 300;
+  border: 1px solid variables.$primary-subtitle;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.clarificationTitle {
+  text-decoration: underline;
+}
+
+.clarificationList {
+  margin-top: 10px;
+  display: flex;
+  padding-left: 20px;
+  flex-direction: column;
+}
+.bold {
+  font-weight: bold;
+}
+
+.relatedTitle {
+  margin-bottom: 20px;
+}
+
+.related {
+  width: 100%;
+}
+
+.relatedList {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-left: 0px;
+}
+
+.relatedProduct {
+  width: 20%;
+  border-radius: 10px;
+  border: 1px solid variables.$primary-border;
+  flex: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.relatedProduct:hover {
+  border: 2px solid variables.$secondary-bg;
+}
+
+.relatedContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.imgRelated {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.3s all;
+}
+
+.imgRelated:hover {
+  transform: scale(1.1);
+}
+
+.productRelatedPara {
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  position: absolute;
+  color: variables.$primary-bg;
+  z-index: 20;
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border: 1px solid variables.$primary-border;
+  padding: 3px 10px;
+  padding-right: 5px;
+  border-radius: 30px;
+  background-color: variables.$primary-color;
+  font-weight: 500;
+}
+
+.button {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  color: variables.$primary-color;
+  padding: 5px 35px;
+  border-radius: 15px;
+  transition: all 0.2s;
+  background-color: variables.$secondary-bg;
+  margin-bottom: 20px;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.disabled {
+  @extend .button;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled:hover {
+  transform: scale(1);
+}
+
+.priceRelated {
+  @extend .price;
+  font-size: 0.7rem;
+  padding: 4px 10px;
+}
+
+@media only screen and (max-width: 992px) {
+  .relatedProduct {
+    width: 25%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .product {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .relatedProduct {
+    width: 35%;
+  }
+  .priceRelated {
+    padding: 2px 8px;
+  }
+  .productRelatedPara {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .product {
+    padding: 20px;
+  }
+  .relatedProduct {
+    width: 45%;
+  }
+  .productRelatedPara {
+    font-size: 0.6em;
+  }
+  .priceRelated {
+    font-size: 0.5rem;
+    padding: 1px 5px;
+  }
+}
