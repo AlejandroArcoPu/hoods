@@ -20,6 +20,16 @@
   transform: scale(1.1);
 }
 
+.disabled {
+  @extend .link;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.disabled:hover {
+  transform: scale(1);
+}
+
 @media only screen and (max-width: 768px) {
   .link {
     font-size: 1rem;

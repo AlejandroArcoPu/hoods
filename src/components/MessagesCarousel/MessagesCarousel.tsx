@@ -4,8 +4,8 @@ import { Autoplay, Navigation } from "swiper/modules";
 
 const carouselItems = [
   "WORLDWIDE SHIPPING 🌍",
-  "15 DAYS RETURNS & EXCHANGES ⚡",
-  "FREE SHIPPING: OVER 80€ 😎",
+  "30 DAYS RETURNS & EXCHANGES ⚡",
+  "FREE SHIPPING 😎",
 ];
 
 export default function MessagesCarousel() {

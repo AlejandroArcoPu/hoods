@@ -5,25 +5,29 @@ import App from "./App.tsx";
 import Error from "./pages/Error/Error.tsx";
 import AppLayout from "./pages/AppLayout/AppLayout.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
-import { getHome } from "./apis.ts";
+import { getHome, getProducts, getCart } from "./apis.ts";
+import Product, { action as productAction } from "./pages/Product/Product.tsx";
 
-export async function homeLoader() {
+const homeLoader = async () => {
   const home = await getHome();
   return { home };
-}
+};
 
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     Component: App,
-//     children: [
-//       { index: true, Component: Home },
-//       { path: "store", Component: Store },
-//     ],
-//   },
-// ]);
+const productsLoader = async ({ request }) => {
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const products = await getProducts(q);
+  return { products, q };
+};
+
+const cartLoader = async () => {
+  const cart = await getCart();
+  return { cart };
+};
+
 export const router = createBrowserRouter([
   {
+    id: "root",
     path: "/",
     element: <App />,
     errorElement: (
@@ -31,20 +35,27 @@ export const router = createBrowserRouter([
         <Error />
       </AppLayout>
     ),
+    loader: homeLoader,
     children: [
-      { index: true, element: <Home />, loader: homeLoader },
+      { index: true, element: <Home /> },
       {
+        id: "store",
         path: "store",
         element: <Store />,
+        loader: productsLoader,
+        children: [
+          {
+            path: ":productId",
+            element: <Product />,
+            action: productAction,
+          },
+        ],
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+        loader: cartLoader,
       },
     ],
-  },
-  {
-    path: "/cart",
-    element: (
-      <AppLayout>
-        <Cart />
-      </AppLayout>
-    ),
   },
 ]);

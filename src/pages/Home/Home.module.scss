@@ -58,13 +58,14 @@
 }
 
 .input {
-  padding: 10px;
-  padding-left: 20px;
+  padding: 5px;
+  padding-left: 15px;
   border-radius: 20px;
+  border: 2px solid variables.$primary-border;
 }
 
 .input:focus {
-  border: 3px solid variables.$secondary-bg;
+  border: 2px solid variables.$secondary-bg;
   outline: none;
 }
 
@@ -114,14 +115,6 @@
     justify-content: center;
   }
 }
-@media only screen and (max-width: 768px) {
-  .input {
-    padding: 8px;
-    padding-left: 20px;
-    font-size: 1rem;
-  }
-}
-
 @media only screen and (max-width: 992px) {
   .textSlider {
     font-size: 1.1rem;
@@ -133,5 +126,12 @@
     text-align: center;
     grid-template-columns: repeat(auto-fit, minmax(250px, 550px));
     padding: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .input {
+    padding: 8px;
+    padding-left: 20px;
+    font-size: 1rem;
   }
 }

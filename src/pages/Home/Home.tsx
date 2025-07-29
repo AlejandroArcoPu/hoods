@@ -4,12 +4,20 @@ import { Autoplay, Pagination, Parallax } from "swiper/modules";
 import SocialMedia from "../../components/SocialMedia/SocialMedia.js";
 import PrimaryCarousel from "../../components/PrimaryCarousel/PrimaryCarousel.js";
 import Payments from "../../components/Payments/Payments.js";
-import Button from "../../components/Button/Button.tsx";
+import Linki from "../../components/Linki/Linki.tsx";
 import { type Home } from "../../apis.ts";
-import { useLoaderData } from "react-router";
+import { useMatches } from "react-router";
+
+type MatchData = {
+  data: {
+    home: Home[];
+  };
+};
 
 export default function Home() {
-  const { home } = useLoaderData();
+  const matches = useMatches();
+  const match = matches.find((match) => match.id === "root") as MatchData;
+  const home = match.data.home as Home[];
   return (
     <>
       <main className={styles.content}>
@@ -46,7 +54,7 @@ export default function Home() {
                   <p className={styles.paragraph} data-swiper-parallax="-200">
                     {carousel.Subtitle}
                   </p>
-                  <Button text={"Shop"} />
+                  <Linki text="Shop" link="/store" />
                 </div>
               </SwiperSlide>
             ))}
@@ -82,7 +90,7 @@ export default function Home() {
                 id="email"
                 name="email"
               />
-              <Button text={"Subscribe"} />
+              <Linki text="Subscribe" link="" />
               <Payments size={24} />
             </div>
           </div>
