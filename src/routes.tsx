@@ -1,19 +1,31 @@
-import { createBrowserRouter } from "react-router";
+import {
+  createBrowserRouter,
+  type ActionFunctionArgs,
+  type LoaderFunctionArgs,
+} from "react-router";
 import Home from "./pages/Home/Home.tsx";
 import Store from "./pages/Store/Store.tsx";
 import App from "./App.tsx";
 import Error from "./pages/Error/Error.tsx";
 import AppLayout from "./pages/AppLayout/AppLayout.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
-import { getHome, getProducts, getCart } from "./apis.ts";
-import Product, { action as productAction } from "./pages/Product/Product.tsx";
+import { getHome, getProducts, getCart, updateCart } from "./apis.ts";
+import Product from "./pages/Product/Product.tsx";
 
 const homeLoader = async () => {
   const home = await getHome();
   return { home };
 };
 
-const productsLoader = async ({ request }) => {
+const productAction = async ({ params, request }: ActionFunctionArgs) => {
+  const data = await request.formData();
+  const object = Object.fromEntries(data);
+  const productId = params.productId as string;
+  const sizeSelected = object.radio as string;
+  return updateCart(productId, sizeSelected);
+};
+
+const productsLoader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
   const products = await getProducts(q);

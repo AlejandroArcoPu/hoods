@@ -16,6 +16,7 @@ export default function Cart() {
             Explore our <span className={styles.underline}>amazing</span>{" "}
             products.
           </p>
+          {total}
           <Linki text="Shop" link="/store" />
         </>
       )}

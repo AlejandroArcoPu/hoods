@@ -1,4 +1,4 @@
-import Papa, { parse, type ParseResult } from "papaparse";
+import Papa, { type ParseResult } from "papaparse";
 
 const API_HOME =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9AllagKXZyv2MhmOpLLyCgIBR-j9FNW53O4TmflMSgvhA8D9ZSRkYwn_7TsBBT8hRRWZRquZPXMwE/pub?output=csv&gid=0";

@@ -45,8 +45,9 @@ export default function Store() {
     pathname !== "/store/skates";
 
   useEffect(() => {
-    if (document.getElementById("q")) {
-      document.getElementById("q")!.value = q;
+    const element = document.getElementById("q") as HTMLInputElement;
+    if (element) {
+      element.value = q;
     }
   }, [q]);
 
