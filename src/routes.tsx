@@ -59,7 +59,7 @@ const cartAction = async ({ request }: ActionFunctionArgs) => {
   }
 };
 
-export const router = createBrowserRouter([
+export const routes = [
   {
     id: "root",
     path: "/",
@@ -94,4 +94,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
