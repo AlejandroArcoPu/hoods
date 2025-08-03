@@ -4,12 +4,13 @@ import {
   Outlet,
   useLoaderData,
   useLocation,
+  useSearchParams,
   useSubmit,
 } from "react-router";
 import styles from "./Store.module.scss";
 import type { Product } from "../../apis";
 import { type Product as ProductT } from "../../apis.ts";
-import { titleCase } from "../../utils.ts";
+import { stringToNumber, titleCase } from "../../utils.ts";
 import { useEffect } from "react";
 import { Search } from "lucide-react";
 
@@ -18,7 +19,10 @@ type LoaderData = {
   q: string;
 };
 
-const SORT_FILTERS = ["Price: Low to high", "Price: High to low"];
+const SORT_FILTERS = [
+  { name: "Price: Low to high", link: "low" },
+  { name: "Price: High to low", link: "high" },
+];
 const COLLECTION_FILTERS = [
   { name: "All", link: "", active: "store" },
   { name: "TShirts", link: "tshirts", active: "tshirts" },
@@ -28,15 +32,31 @@ const COLLECTION_FILTERS = [
 
 export default function Store() {
   const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const newParams = new URLSearchParams(searchParams);
   const submit = useSubmit();
   const { products, q } = useLoaderData<LoaderData>();
+  const { pathname } = useLocation();
+
   const locationSplit = location.pathname.split("/");
   const lastPath = locationSplit[locationSplit.length - 1];
-  const filteredProducts =
+
+  let filteredProducts =
     lastPath === "store"
       ? products
       : products.filter((product) => product.Category === titleCase(lastPath));
-  const { pathname } = useLocation();
+
+  if (newParams.getAll("sort").length > 0) {
+    filteredProducts =
+      newParams.getAll("sort")[0] === "low"
+        ? filteredProducts.sort(
+            (a, b) => stringToNumber(a.Price) - stringToNumber(b.Price)
+          )
+        : filteredProducts.sort(
+            (a, b) => stringToNumber(b.Price) - stringToNumber(a.Price)
+          );
+  }
+
   const isProductPage =
     pathname.includes("/store/") &&
     pathname !== "/store" &&
@@ -129,13 +149,20 @@ export default function Store() {
         <nav>
           <p className={styles.listTitle}>Sort by</p>
           <ul className={styles.list}>
-            {SORT_FILTERS.map((filter) => (
-              <li key={filter}>
-                <Link viewTransition className={styles.link} to="/store">
-                  {filter}
-                </Link>
-              </li>
-            ))}
+            {SORT_FILTERS.map((filter) => {
+              newParams.set("sort", filter.link);
+              return (
+                <li key={filter.link}>
+                  <Link
+                    viewTransition
+                    className={styles.link}
+                    to={`?${newParams.toString()}`}
+                  >
+                    {filter.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

@@ -34,6 +34,14 @@ export default function Product() {
       : SIZES_CLOTHES;
 
   const [size, setSize] = useState("");
+  const [notification, setNotification] = useState(false);
+
+  const productAdded = () => {
+    setNotification(true);
+    setTimeout(() => {
+      setNotification(false);
+    }, 3500);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSize(e.target.id);
@@ -41,6 +49,21 @@ export default function Product() {
 
   return (
     <main className={styles.main}>
+      <div
+        className={`${styles.notification} ${notification ? styles.show : ""}`}
+      >
+        <div className={styles.notificationImgContainer}>
+          <img
+            src={product!.Image}
+            alt={`${product!.Title}`}
+            className={styles.img}
+          />
+        </div>
+        <p>
+          <span className={styles.notificationTitle}>{product!.Title}</span>{" "}
+          added to cart!
+        </p>
+      </div>
       <div className={styles.product}>
         <div className={styles.imgContainer}>
           <img
@@ -80,6 +103,7 @@ export default function Product() {
               </div>
               <button
                 type="submit"
+                onClick={productAdded}
                 className={size === "" ? styles.disabled : styles.button}
               >
                 Add to cart

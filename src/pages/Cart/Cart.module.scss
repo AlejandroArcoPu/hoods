@@ -1,7 +1,6 @@
 @use "../../styles/variables.module.scss";
 
 .main {
-  margin-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -9,6 +8,11 @@
   min-height: 80vh;
   text-align: center;
   padding: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 2rem;
 }
 
 .link {
@@ -33,8 +37,159 @@
   text-decoration: underline;
 }
 
+.products {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid variables.$primary-border;
+  box-shadow: 1px 1px 1px variables.$primary-border;
+}
+
+.contentTitle {
+  margin-right: auto;
+  font-size: 2rem;
+}
+
+.trashContainer {
+  position: absolute;
+  top: 5px;
+  left: -5px;
+}
+
+.trash {
+  border: none;
+  background-color: #ececec;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  border: 1px solid variables.$primary-subtitle;
+}
+
+.product {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 1fr;
+  gap: 20px;
+  align-items: center;
+  border-bottom: 1px solid variables.$primary-border;
+}
+
+.imgContainer {
+  border-radius: 10px;
+  border: 1px solid variables.$primary-border;
+  overflow: hidden;
+  width: 100px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.6;
+}
+
+.productPrice {
+  justify-self: flex-end;
+}
+
+.article {
+  text-decoration: underline;
+}
+
+.total {
+  font-size: 1.2rem;
+  margin: 10px 0px;
+  color: black;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+
+.productTitle {
+  font-weight: 600;
+}
+
+.productSize {
+  color: variables.$primary-subtitle;
+}
+
+.buttons {
+  width: 100%;
+  max-width: 150px;
+  min-width: 70px;
+  display: flex;
+  align-items: center;
+  border: 1px solid variables.$primary-subtitle;
+  border-radius: 20px;
+  padding: 5px 5px;
+  justify-content: space-around;
+}
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.quantity {
+  width: 100%;
+}
+
+.button {
+  width: 32px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 768px) {
-  .emptyTitle {
-    font-size: 1.5rem;
+  .product {
+    gap: 15px;
+  }
+  .content {
+    padding: 20px;
+  }
+
+  .imgContainer {
+    width: 80px;
+  }
+  .button {
+    width: 24px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    font-size: 0.8rem;
+  }
+
+  .button {
+    width: 14px;
   }
 }
