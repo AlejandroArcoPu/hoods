@@ -23,10 +23,20 @@ export type Product = {
   Color: string;
 };
 
-export type LocalStorageData = {
+export type ReduceProduct = {
   id: string;
+  title: string;
+  price: string;
+  image: string;
   size: string;
   quantity: number;
+};
+
+export type CartProduct = {
+  id: string;
+  size: string;
+  type: string;
+  quantity: string;
 };
 
 // this is mocking a way of having an external datasource to put our photos and text in the main page.
@@ -89,16 +99,24 @@ export const getProduct = async (id: string): Promise<Product> => {
   return product!;
 };
 
-export const updateCart = (productId: string, size: string) => {
+export const addProductCart = async (productId: string, size: string) => {
   const data = localStorage.getItem("hoods_cart");
-  const cart: LocalStorageData[] = data ? JSON.parse(data) : [];
+  const cart: ReduceProduct[] = data ? JSON.parse(data) : [];
 
   const existingProduct = cart.find(
     (product) => product.id === productId && product.size === size
   );
 
   if (!existingProduct) {
-    cart.push({ id: productId, size: size, quantity: 1 });
+    const product = await getProduct(productId);
+    cart.push({
+      id: productId,
+      price: product.Price,
+      title: product.Title,
+      image: product.Image,
+      size: size,
+      quantity: 1,
+    });
   } else {
     existingProduct.quantity++;
   }
@@ -108,6 +126,38 @@ export const updateCart = (productId: string, size: string) => {
 
 export const getCart = () => {
   const data = localStorage.getItem("hoods_cart");
-  const cart: LocalStorageData[] = data ? JSON.parse(data) : [];
+  const cart: ReduceProduct[] = data ? JSON.parse(data) : [];
   return cart;
+};
+
+export const deleteProductCart = (product: CartProduct) => {
+  const { id, size } = product;
+  const data = localStorage.getItem("hoods_cart");
+  const cart: ReduceProduct[] = data ? JSON.parse(data) : [];
+  const deleted = cart.filter((p) => p.size !== size || p.id !== id);
+  localStorage.setItem("hoods_cart", JSON.stringify(deleted));
+};
+
+export const minusProductCart = (product: CartProduct) => {
+  const { quantity, id, size } = product;
+  if (quantity !== "1") {
+    const data = localStorage.getItem("hoods_cart");
+    const cart: ReduceProduct[] = data ? JSON.parse(data) : [];
+    const existingProduct = cart.find(
+      (product) => product.id === id && product.size === size
+    );
+    existingProduct!.quantity--;
+    localStorage.setItem("hoods_cart", JSON.stringify(cart));
+  }
+};
+
+export const plusProductCart = (product: CartProduct) => {
+  const { id, size } = product;
+  const data = localStorage.getItem("hoods_cart");
+  const cart: ReduceProduct[] = data ? JSON.parse(data) : [];
+  const existingProduct = cart.find(
+    (product) => product.id === id && product.size === size
+  );
+  existingProduct!.quantity++;
+  localStorage.setItem("hoods_cart", JSON.stringify(cart));
 };

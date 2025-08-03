@@ -9,12 +9,22 @@ import App from "./App.tsx";
 import Error from "./pages/Error/Error.tsx";
 import AppLayout from "./pages/AppLayout/AppLayout.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
-import { getHome, getProducts, getCart, updateCart } from "./apis.ts";
+import {
+  getHome,
+  getProducts,
+  getCart,
+  addProductCart,
+  deleteProductCart,
+  type CartProduct,
+  minusProductCart,
+  plusProductCart,
+} from "./apis.ts";
 import Product from "./pages/Product/Product.tsx";
 
 const homeLoader = async () => {
   const home = await getHome();
-  return { home };
+  const cart = getCart();
+  return { home, cart };
 };
 
 const productAction = async ({ params, request }: ActionFunctionArgs) => {
@@ -22,7 +32,7 @@ const productAction = async ({ params, request }: ActionFunctionArgs) => {
   const object = Object.fromEntries(data);
   const productId = params.productId as string;
   const sizeSelected = object.radio as string;
-  return updateCart(productId, sizeSelected);
+  return await addProductCart(productId, sizeSelected);
 };
 
 const productsLoader = async ({ request }: LoaderFunctionArgs) => {
@@ -33,8 +43,20 @@ const productsLoader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 const cartLoader = async () => {
-  const cart = await getCart();
+  const cart = getCart();
   return { cart };
+};
+
+const cartAction = async ({ request }: ActionFunctionArgs) => {
+  const data = await request.formData();
+  const object = Object.fromEntries(data) as CartProduct;
+  if (object.type === "delete") {
+    return deleteProductCart(object);
+  } else if (object.type === "minus") {
+    return minusProductCart(object);
+  } else {
+    return plusProductCart(object);
+  }
 };
 
 export const router = createBrowserRouter([
@@ -42,6 +64,7 @@ export const router = createBrowserRouter([
     id: "root",
     path: "/",
     element: <App />,
+    HydrateFallback: () => null,
     errorElement: (
       <AppLayout>
         <Error />
@@ -67,6 +90,7 @@ export const router = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
         loader: cartLoader,
+        action: cartAction,
       },
     ],
   },

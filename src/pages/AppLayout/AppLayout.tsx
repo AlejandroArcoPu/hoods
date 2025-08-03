@@ -1,8 +1,9 @@
 import type React from "react";
-import { Link, Outlet, useNavigation } from "react-router";
+import { Link, Outlet, useLoaderData, useNavigation } from "react-router";
 import styles from "./AppLayout.module.scss";
 import logo from "../../assets/logo.avif";
 import { ShoppingCart, LoaderCircle } from "lucide-react";
+import { getQuantity } from "../../utils";
 
 type AppLayout = {
   children?: React.JSX.Element;
@@ -10,6 +11,8 @@ type AppLayout = {
 
 export default function AppLayout({ children }: AppLayout) {
   const navigation = useNavigation();
+  const { cart } = useLoaderData();
+  const quantity = getQuantity(cart);
   return (
     <>
       <header className={styles.header}>
@@ -19,7 +22,7 @@ export default function AppLayout({ children }: AppLayout) {
             alt="Logo Hoods, white fire and a background red"
             className={styles.logo}
           />
-          Hoods
+          <p className={styles.textTitle}>Hoods</p>
         </Link>
         <div className={styles.icons}>
           <LoaderCircle
@@ -31,6 +34,9 @@ export default function AppLayout({ children }: AppLayout) {
           />
           <Link viewTransition className={styles.cart} to="/cart">
             <ShoppingCart className={styles.cartIcon} />
+            {quantity > 0 && (
+              <span className={styles.quantity}>{quantity}</span>
+            )}
           </Link>
         </div>
       </header>

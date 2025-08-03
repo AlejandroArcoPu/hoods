@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: 40px;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .product {
@@ -223,6 +224,42 @@
   border-radius: 30px;
   background-color: variables.$primary-color;
   font-weight: 500;
+}
+
+.notification {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid variables.$primary-border;
+  box-shadow: 1px 1px 1px variables.$primary-border;
+  z-index: 99;
+  background-color: variables.$secondary-bg; /* green */
+  color: white;
+  right: 20px;
+  top: 5px;
+  font-size: 0.7rem;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none; /* prevent interaction when hidden */
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.notificationImgContainer {
+  @extend .imgContainer;
+  width: 40px;
+}
+.notificationTitle {
+  font-weight: 700;
 }
 
 .button {
