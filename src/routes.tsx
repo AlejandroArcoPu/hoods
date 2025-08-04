@@ -1,8 +1,4 @@
-import {
-  createBrowserRouter,
-  type ActionFunctionArgs,
-  type LoaderFunctionArgs,
-} from "react-router";
+import { type ActionFunctionArgs, type LoaderFunctionArgs } from "react-router";
 import Home from "./pages/Home/Home.tsx";
 import Store from "./pages/Store/Store.tsx";
 import App from "./App.tsx";
