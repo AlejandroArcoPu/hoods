@@ -37,10 +37,12 @@ export default function Product() {
   const [notification, setNotification] = useState(false);
 
   const productAdded = () => {
-    setNotification(true);
-    setTimeout(() => {
-      setNotification(false);
-    }, 3500);
+    if (size !== "") {
+      setNotification(true);
+      setTimeout(() => {
+        setNotification(false);
+      }, 3500);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
