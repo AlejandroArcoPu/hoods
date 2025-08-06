@@ -35,6 +35,7 @@ const productsLoader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
   const products = await getProducts(q);
+  console.log(products);
   return { products, q };
 };
 

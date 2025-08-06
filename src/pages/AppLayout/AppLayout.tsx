@@ -11,8 +11,11 @@ type AppLayout = {
 
 export default function AppLayout({ children }: AppLayout) {
   const navigation = useNavigation();
-  const { cart } = useLoaderData();
-  const quantity = getQuantity(cart);
+  const data = useLoaderData();
+  let quantity = 0;
+  if (data) {
+    quantity = getQuantity(data.cart);
+  }
   return (
     <>
       <header className={styles.header}>
