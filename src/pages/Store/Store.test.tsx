@@ -1,11 +1,4 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-  within,
-} from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { createMemoryRouter, RouterProvider } from "react-router";
@@ -102,15 +95,11 @@ describe("Store component tests", () => {
     await user.click(screen.getByText("TShirts"));
     expect(screen.getByText(mockStoreData[1].Title)).toBeInTheDocument();
     expect(screen.getByText(mockStoreData[1].Price)).toBeInTheDocument();
+    expect(router.state.location.pathname).toBe("/store/tshirts");
     await waitFor(async () => {
       expect(
         screen.queryByText(mockStoreData[0].Price)
       ).not.toBeInTheDocument();
     });
-  });
-
-  test("Search for not found product should return a message", async () => {
-    render(<RouterProvider router={router} />);
-    // do input event when not found and found and thats all for this one
   });
 });
