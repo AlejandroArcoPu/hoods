@@ -114,7 +114,7 @@ export default function Store() {
         </nav>
       </div>
       {filteredProducts.length === 0 ? (
-        <section className={styles.notProduct}>
+        <section className={styles.notProduct} aria-label="nothing">
           <h1>Oops!</h1>
           <p>
             Sorry, the product <span className={styles.underline}>{q}</span> is
@@ -122,7 +122,7 @@ export default function Store() {
           </p>
         </section>
       ) : (
-        <section className={styles.products}>
+        <section className={styles.products} aria-label="products">
           {filteredProducts.length &&
             filteredProducts.map((product: Product) => (
               <Link viewTransition key={product.Id} to={`/store/${product.Id}`}>
